@@ -1,0 +1,30 @@
+str1=int(input("Enter the ref string:"))
+pages=int(input("Enter the number of page slots:"))
+
+lst=[]
+for i in str(str1)[:pages]:
+    if(i in lst):
+        lst.append(int(str(str1)[pages]))
+    else:
+        lst.append(int(i))
+    
+print(lst) 
+fault=pages
+hit=0
+r=0
+print(str(str1)[pages:])
+for i in range(pages,len(str(str1))):
+    if(int(str(str1)[i]) in lst):
+        hit+=1
+    elif(r==pages-1):
+        lst[r]=int(str(str1)[i])
+        fault+=1
+        r=0
+    else:
+        lst[r]=int(str(str1)[i])
+        fault+=1
+        r+=1
+    print(lst)
+
+print("Faults:",fault)
+print("hits:",hit)
